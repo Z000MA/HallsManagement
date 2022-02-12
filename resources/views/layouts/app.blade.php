@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/prism.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/switchery.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/chartist.min.css')}}">
+    <link rel="stylesheet" href="../../../app-assets/vendors/css/swiper.min.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN APEX CSS-->
     @if(app()->getLocale() == 'ar')
@@ -35,9 +36,12 @@
     <link rel="stylesheet" href="{{asset('app-assets/css-rtl/plugins/switchery.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/custom-rtl.css')}}">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;400;700&display=swap" rel="stylesheet">
     <style>
-        h1, h2, h3, h4, h5, h6, p, span, label {
-            font-family: "DroidArabicKufiRegular" !important;
+        body, h1, h2, h3, h4, h5, h6, p, span, label, a, span {
+            font-family: "Tajawal" !important;
         }
     </style>
     <!-- END APEX CSS-->
@@ -56,6 +60,7 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <!-- END APEX CSS-->
     <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" href="../../../app-assets/css/pages/ex-component-swiper.css">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard1.css')}}">
     <!-- END Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
@@ -103,6 +108,7 @@
     <script src="{{asset('app-assets/vendors/js/switchery.min.js')}}"></script>
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
+    <script src="../../../app-assets/vendors/js/swiper.min.js"></script>
     <script src="{{asset('app-assets/vendors/js/chartist.min.js')}}"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN APEX JS-->

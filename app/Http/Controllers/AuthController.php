@@ -11,6 +11,10 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +43,7 @@ class AuthController extends Controller
             'password' => $request->password
         ];
         if (Auth::attempt($credentials)) {
-            return redirect()->route('login');
+            return redirect()->route('home');
         }
         return redirect()->route('login')->with('errors', [Lang::get('messages.loginFailed')]);
     }
@@ -67,7 +71,7 @@ class AuthController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -78,7 +82,19 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'password' => 'required|string'
+        ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password)
+        ]);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -89,7 +105,8 @@ class AuthController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.show')->with('user', $user);
     }
 
     /**
@@ -114,7 +131,16 @@ class AuthController extends Controller
     {
         //
     }
-
+    public function activate($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('users.index')->with('errors', ['this user does not exist!']);
+        }
+        $user->is_active = 1;
+        $user->update();
+        return redirect()->route('users.index')->with('success', ['user banned successfully!']);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -123,6 +149,12 @@ class AuthController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('users.index')->with('errors', ['this user does not exist!']);
+        }
+        $user->is_active = 0;
+        $user->update();
+        return redirect()->route('users.index')->with('success', ['user banned successfully!']);
     }
 }

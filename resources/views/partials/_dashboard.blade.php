@@ -12,9 +12,9 @@
             <div class="sidebar-content main-menu-content">
                 <div class="nav-container">
                     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                        <li class="nav-item"><a href="javascript:;"><i class="ft-home"></i><span class="menu-title" data-i18n="Dashboard">@lang('dashboard.home')</span></a>
+                        <li class="nav-item"><a href="{{route('home')}}"><i class="ft-home"></i><span class="menu-title" data-i18n="Dashboard">@lang('dashboard.home')</span></a>
                         </li>
-                        <li class=" nav-item"><a href="app-email.html"><i class="ft-package"></i><span class="menu-title" data-i18n="halls">@lang('dashboard.hallsMng')</span></a>
+                        <li class=" nav-item"><a href="{{route('halls.index')}}"><i class="ft-package"></i><span class="menu-title" data-i18n="halls">@lang('dashboard.hallsMng')</span></a>
                         </li>
                         <li class=" nav-item"><a href="app-chat.html"><i class="ft-users"></i><span class="menu-title" data-i18n="customers">@lang('dashboard.customers')</span></a>
                         </li>
