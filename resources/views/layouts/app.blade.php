@@ -24,7 +24,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/prism.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/switchery.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/chartist.min.css')}}">
-    <link rel="stylesheet" href="../../../app-assets/vendors/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/swiper.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/toastr.css')}}">
     <!-- END VENDOR CSS-->
     <!-- BEGIN APEX CSS-->
     @if(app()->getLocale() == 'ar')
@@ -46,6 +47,7 @@
     </style>
     <!-- END APEX CSS-->
     <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" href="{{asset('app-assets/css/pages/ex-component-swiper.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css-rtl/pages/dashboard1.css')}}">
     <!-- END Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
@@ -60,13 +62,14 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <!-- END APEX CSS-->
     <!-- BEGIN Page Level CSS-->
-    <link rel="stylesheet" href="../../../app-assets/css/pages/ex-component-swiper.css">
+    
+    <link rel="stylesheet" href="{{asset('app-assets/css/pages/ex-component-swiper.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard1.css')}}">
     <!-- END Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
     @endif
-    
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/ex-component-toastr.css')}}">
     <!-- END: Custom CSS-->
 </head>
 <!-- END : Head-->
@@ -110,6 +113,7 @@
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="../../../app-assets/vendors/js/swiper.min.js"></script>
     <script src="{{asset('app-assets/vendors/js/chartist.min.js')}}"></script>
+    <script src="{{asset('app-assets/vendors/js/toastr.min.js')}}"></script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN APEX JS-->
     <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
@@ -119,11 +123,28 @@
     <script src="{{asset('app-assets/js/scroll-top.js')}}"></script>
     <!-- END APEX JS-->
     <!-- BEGIN PAGE LEVEL JS-->
+    <script src="{{asset('app-assets/js/ex-component-swiper.js')}}"></script>
     <script src="{{asset('app-assets/js/dashboard1.js')}}"></script>
     <!-- END PAGE LEVEL JS-->
     <!-- BEGIN: Custom CSS-->
     <script src="{{asset('assets/js/scripts.js')}}"></script>
     <!-- END: Custom CSS-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+        @foreach($errors as $error)
+            toastr.error('{{$error}}', 'Error!!', {
+            "showMethod": "slideDown",
+            "hideMethod": "slideUp",
+            timeOut: 2000});
+        @endforeach
+        @if(session()->has('success'))
+            toastr.success('{{session('success')}}', 'SUCCESS!!', {
+            "showMethod": "slideDown",
+            "hideMethod": "slideUp",
+            timeOut: 2000});
+        @endif
+        });
+    </script>
 </body>
 <!-- END : Body-->
 

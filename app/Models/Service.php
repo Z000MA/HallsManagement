@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HallImage extends Model
+class Service extends Model
 {
     use HasFactory;
-    protected $table = 'hall_images';
+    protected $table = 'services';
     protected $fillable = [
-        'hall_id', 'tag' ,'name'
+        'hall_id', 'name', 'price', 'description', 'required'
     ];
     public function hall()
     {
