@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HallImage extends Model
+class State extends Model
 {
     use HasFactory;
-    protected $table = 'hall_images';
+    protected $table = 'states';
     protected $fillable = [
-        'hall_id', 'tag' ,'name'
+        'name'
     ];
-    public function hall()
+    public function reservation()
     {
-        return $this->belongsTo('App\Models\Hall');
+        return $this->hasMany('App\Models\Reservation');
     }
 }

@@ -16,13 +16,13 @@
                         </li>
                         <li class=" nav-item"><a href="{{route('halls.index')}}"><i class="ft-package"></i><span class="menu-title" data-i18n="halls">@lang('dashboard.hallsMng')</span></a>
                         </li>
-                        <li class=" nav-item"><a href="app-chat.html"><i class="ft-users"></i><span class="menu-title" data-i18n="customers">@lang('dashboard.customers')</span></a>
+                        <li class=" nav-item"><a href="{{route('customers.index')}}"><i class="ft-users"></i><span class="menu-title" data-i18n="customers">@lang('dashboard.customers')</span></a>
                         </li>
-                        <li class=" nav-item"><a href="app-taskboard.html"><i class="ft-calendar"></i><span class="menu-title" data-i18n="reservations">@lang('dashboard.reservations')</span></a>
+                        <li class=" nav-item"><a href="{{route('reservations.index')}}"><i class="ft-calendar"></i><span class="menu-title" data-i18n="reservations">@lang('dashboard.reservations')</span></a>
                         </li>
                         <li class=" nav-item"><a href="app-calendar.html"><i class="ft-clipboard"></i><span class="menu-title" data-i18n="orders">@lang('dashboard.orders')</span></a>
                         </li>
-                        <li class=" nav-item"><a href="app-calendar.html"><i class="ft-menu"></i><span class="menu-title" data-i18n="services">@lang('dashboard.services')</span></a>
+                        <li class=" nav-item"><a href="{{route('services.index')}}"><i class="ft-menu"></i><span class="menu-title" data-i18n="services">@lang('dashboard.services')</span></a>
                         </li>
                         <li class=" nav-item"><a href="app-calendar.html"><i class="ft-dollar-sign"></i><span class="menu-title" data-i18n="payments">@lang('dashboard.payments')</span></a>
                         </li>

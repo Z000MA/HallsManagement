@@ -24,7 +24,14 @@ class User extends Authenticatable
         'password',
         'is_active'
     ];
-
+    public function reservations()
+    {
+        return $this->hasMany('App\Models\Reservation');
+    }
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

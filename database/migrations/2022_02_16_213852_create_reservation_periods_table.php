@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddHallImagesTable extends Migration
+class CreateReservationPeriodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class AddHallImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hall_images', function (Blueprint $table) {
+        Schema::create('reservation_periods', function (Blueprint $table) {
             $table->id();
-            $table->integer('hall_id');
-            $table->string('tag');
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->time('start');
+            $table->time('end');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class AddHallImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hall_images');
+        Schema::dropIfExists('reservation_periods');
     }
 }
