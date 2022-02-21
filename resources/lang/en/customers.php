@@ -6,6 +6,7 @@ return [
     'phone' => 'Phone Number',
     'noCustomersRegistered' => 'No Customers registegred!',
     'orders' => 'Orders',
+    'state' => 'State',
 
     'create' => 'Create Customer',
     'update' => 'Update Customer',

@@ -30,6 +30,10 @@ Route::group([
             Route::resource('/services', App\Http\Controllers\ServicesController::class);
             Route::resource('/customers', App\Http\Controllers\CustomerController::class);
             Route::put('/customers/{id}/activate', [App\Http\Controllers\CustomerController::class, 'activate'])->name('customers.activate');
+            Route::resource('/reservations', App\Http\Controllers\ReservationsController::class);
+            Route::post('/reservations/{id}/services', [App\Http\Controllers\ReservationsController::class, 'updateServices'])->name('reservations.services');
+            Route::get('/reservations/{id}/print', [App\Http\Controllers\ReservationsController::class, 'print'])->name('reservations.print');
+            Route::resource('/payments', App\Http\Controllers\PaymentsController::class);
         });
     });
 

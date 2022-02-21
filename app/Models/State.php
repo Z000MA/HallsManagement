@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class State extends Model
 {
     use HasFactory;
-    protected $table = 'customers';
+    protected $table = 'states';
     protected $fillable = [
-        'name', 'email', 'phone', 'active'
+        'name'
     ];
-    public function reservations()
+    public function reservation()
     {
         return $this->hasMany('App\Models\Reservation');
     }

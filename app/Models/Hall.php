@@ -16,4 +16,12 @@ class Hall extends Model
     {
         return $this->hasMany('App\Models\HallImage');
     }
+    public function services()
+    {
+        return $this->hasMany('App\Models\Service');
+    }
+    public function reservations()
+    {
+        return $this->hasMany('App\Models\Reservation');
+    }
 }

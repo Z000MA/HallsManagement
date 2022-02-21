@@ -6,6 +6,7 @@ return [
     'phone' => 'رقم الهاتف',
     'noCustomersRegistered' => 'ليس هناك عملاء مسجلين!',
     'orders' => 'طليات العميل',
+    'state' => 'الحالة',
     
     'create' => 'إضافة عميل',
     'update' => 'حديث بيانات العميل',
