@@ -18,10 +18,11 @@
             <table class="table table-sm">
                 <thead>
                     <tr>
-                        <td>Customer</td>
-                        <td>Date</td>
-                        <td>Value</td>
-                        <td>Hall</td>
+                        <td>@lang('payments.customer')</td>
+                        <td>@lang('payments.date')</td>
+                        <td>@lang('payments.value')</td>
+                        <td>@lang('payments.paymentMethod')</td>
+                        <td>@lang('payments.hall')</td>
                         <td></td>
                     </tr>
                 </thead>
@@ -31,11 +32,12 @@
                         <td>{{$payment->reservation->customer->name}}</td>
                         <td>{{date('d/m/Y', strtotime($payment->created_at))}}</td>
                         <td>{{$payment->value}}</td>
+                        <td>{{$payment->payment_method}}</td>
                         <td>{{$payment->reservation->hall->name}}</td>
                         <td>
                             <div class="btn-group btn-group-sm">
                                 <a href="{{route('payments.show', $payment->id)}}" class="btn bg-light-warning"><i class="ft-edit"></i></a>
-                                <a href="" class="btn bg-light-info"><i class="ft-printer"></i></a>
+                                <a href="{{route('payments.print', $payment->id)}}" target="_blank" class="btn bg-light-info"><i class="ft-printer"></i></a>
                             </div>
                         </td>
                     </tr>

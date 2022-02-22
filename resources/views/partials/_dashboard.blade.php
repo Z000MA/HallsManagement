@@ -24,7 +24,7 @@
                         </li>
                         <li class=" nav-item"><a href="{{route('services.index')}}"><i class="ft-menu"></i><span class="menu-title" data-i18n="services">@lang('dashboard.services')</span></a>
                         </li>
-                        <li class=" nav-item"><a href="app-calendar.html"><i class="ft-dollar-sign"></i><span class="menu-title" data-i18n="payments">@lang('dashboard.payments')</span></a>
+                        <li class=" nav-item"><a href="{{route('payments.index')}}"><i class="ft-dollar-sign"></i><span class="menu-title" data-i18n="payments">@lang('dashboard.payments')</span></a>
                         </li>
                         <li class=" nav-item"><a href="app-calendar.html"><i class="ft-trending-up"></i><span class="menu-title" data-i18n="reports">@lang('dashboard.reports')</span></a>
                         </li>

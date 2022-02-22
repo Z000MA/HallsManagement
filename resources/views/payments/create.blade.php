@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-md-3 col-form-label">@lang('payments.peyMethod')</label>
+                <label class="col-md-3 col-form-label">@lang('payments.paymentMethod')</label>
                 <div class="col-md-9">
                     <select name="pay_method" id="customers" class="form-control">
                         <option value="Cash">Cash</option>

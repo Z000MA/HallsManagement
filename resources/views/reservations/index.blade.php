@@ -21,8 +21,9 @@
                         <td>#</td>
                         <td>@lang('reservations.hall')</td>
                         <td>@lang('reservations.customer')</td>
-                        <td>@lang('reservations.period')</td>
                         <td>@lang('reservations.total')</td>
+                        <td>@lang('reservations.totalPayed')</td>
+                        <td>@lang('reservations.remaining')</td>
                         <td>@lang('reservations.state')</td>
                         <td>@lang('reservations.user')</td>
                         <td></td>
@@ -37,14 +38,20 @@
                             </span>
                         </td>
                         <td>
-                            <h5 class="mb-0">{{$reservation->hall->name}}</h5>
-                            <span class="text-muted-font-small-1">
+                            <h6 class="mb-0">{{$reservation->hall->name}}</h5>
+                            <span class="text-muted font-small-3">
                             {{$reservation->date}}
                             </span>
                         </td>
-                        <td>{{$reservation->customer->name}}</td>
-                        <td>{{$reservation->period->name}}</td>
+                        <td>
+                            <h6 class="mb-0">{{$reservation->customer->name}}</h5>
+                            <span class="text-muted font-small-3">
+                            {{$reservation->period->name}}
+                            </span>
+                        </td>
                         <td>{{$reservation->total}}</td>
+                        <td>{{$reservation->payments->sum('value')}}</td>
+                        <td>{{$reservation->total - $reservation->payments->sum('value')}}</td>
                         <td>
                             <span class="badge badge-pill @if($reservation->state_id == 1)bg-light-primary @elseif($reservation->state_id == 2)bg-light-success @else bg-light-danger @endif">
                             {{$reservation->state->name}}

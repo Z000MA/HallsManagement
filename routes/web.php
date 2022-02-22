@@ -34,6 +34,7 @@ Route::group([
             Route::post('/reservations/{id}/services', [App\Http\Controllers\ReservationsController::class, 'updateServices'])->name('reservations.services');
             Route::get('/reservations/{id}/print', [App\Http\Controllers\ReservationsController::class, 'print'])->name('reservations.print');
             Route::resource('/payments', App\Http\Controllers\PaymentsController::class);
+            Route::get('/payments/{id}/print', [App\Http\Controllers\PaymentsController::class, 'print'])->name('payments.print');
         });
     });
 

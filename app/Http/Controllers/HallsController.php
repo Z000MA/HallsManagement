@@ -41,11 +41,12 @@ class HallsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
+            'name' => 'required|unique:halls,name',
             'capacity' => 'required|integer',
             'advance' => 'required|numeric'
         ]);
         if ($validator->fails()) {
+            session()->flash('error', $validator->errors());
             return redirect()->route('halls.create')->with('errors', $validator->errors());
         }
         $hall = Hall::create($request->all());

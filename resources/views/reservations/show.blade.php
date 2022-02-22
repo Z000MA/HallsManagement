@@ -43,17 +43,46 @@
                             </tr>
                         </table>
                         <div class="@lang('site.pull')">
-                            <a href="{{route('reservations.edit', $reservation->id)}}" class="btn btn-sm bg-light-info"><i class="ft-info mr-1"></i>Update info</a>
-                            <form action="{{route('reservations.destroy', $reservation->id)}}" method="POST">
-                                @csrf
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-sm bg-light-danger">
-                                    <i class="ft-trash mr-1"></i>
-                                    @lang('reservations.delete')
-                                </button>
-                            </form>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                <a href="{{route('reservations.edit', $reservation->id)}}" class="btn btn-sm bg-light-info"><i class="ft-info mr-1"></i>@lang('reservations.update')</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <form action="{{route('reservations.destroy', $reservation->id)}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-sm bg-light-danger">
+                                            <i class="ft-trash mr-1"></i>
+                                            @lang('reservations.cancel')
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                    @if(count($reservation->payments) > 0)
+                    <h4 class="card-title primary">@lang('payments.index')</h4>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <td>@lang('payments.value')</td>
+                                    <td>@lang('payments.date')</td>
+                                    <td>@lang('payments.user')</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($reservation->payments as $payment)
+                                <tr>
+                                    <td>{{$payment->value}}</td>
+                                    <td>{{date('d/m/Y', strtotime($payment->created_at))}}</td>
+                                    <td>{{$payment->user->name}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
                 </div>
                 <div class="col-md-6">
                 <form action="{{route('reservations.services', $reservation->id)}}" method="POST">

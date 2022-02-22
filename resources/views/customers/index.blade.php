@@ -22,7 +22,7 @@
                         <td>@lang('customers.name')</td>
                         <td>@lang('customers.email')</td>
                         <td>@lang('customers.phone')</td>
-                        <td>@lang('customers.orders')</td>
+                        <td>@lang('customers.reservations')</td>
                         <td>@lang('customers.state')</td>
                         <td></td>
                     </tr>
@@ -38,7 +38,7 @@
                         <td>{{$customer->name}}</td>
                         <td>{{$customer->email}}</td>
                         <td>{{$customer->phone}}</td>
-                        <td></td>
+                        <td>{{$customer->reservations->count()}}</td>
                         <td>
                             @if($customer->active == 1)
                             <span class="badge badge-pill bg-light-success">active</span>
