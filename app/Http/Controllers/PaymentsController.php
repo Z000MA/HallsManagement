@@ -69,7 +69,15 @@ class PaymentsController extends Controller
         }
         return view('payments.show')->with('payment', $payment);
     }
-
+    public function print($id)
+    {
+        $payment = Payment::find($id);
+        if (!$payment) {
+            session()->flash('error', 'this payment does not exist!');
+            return redirect()->route('payments.index');
+        }
+        return view('payments.print')->with('payment', $payment);
+    }
     /**
      * Show the form for editing the specified resource.
      *

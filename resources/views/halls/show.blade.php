@@ -45,6 +45,10 @@
                         <td>{{$hall->location}}</td>
                     </tr>
                     <tr>
+                        <td class="font-weight-bold">Reservations Count</td>
+                        <td>{{$hall->reservations->count()}}</td>
+                    </tr>
+                    <tr>
                         <td class="font-weight-bold">Advance value</td>
                         <td>{{$hall->advance}} SDG</td>
                     </tr>
@@ -61,6 +65,9 @@
                         </td>
                     </tr>
                 </table>
+            </div>
+            <div class="col-md-12">
+                <div class="table-responsive"></div>
             </div>
         </div>
     </div>

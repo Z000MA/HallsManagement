@@ -135,7 +135,8 @@ class AuthController extends Controller
         }
         $user->is_active = 1;
         $user->update();
-        return redirect()->route('users.index')->with('success', ['user banned successfully!']);
+        session()->flash('success', 'user has been activated!');
+        return redirect()->route('users.index');
     }
     /**
      * Remove the specified resource from storage.
@@ -151,6 +152,7 @@ class AuthController extends Controller
         }
         $user->is_active = 0;
         $user->update();
-        return redirect()->route('users.index')->with('success', ['user banned successfully!']);
+        session()->flash('success', 'user has been banned from the system!');
+        return redirect()->route('users.index');
     }
 }
