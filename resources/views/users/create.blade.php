@@ -33,6 +33,18 @@
                     <input type="text" name="phone" class="form-control">
                 </div>
             </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">@lang('users.password')</label>
+                <div class="col-md-9">
+                    <input type="password" name="password" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">@lang('users.role')</label>
+                <div class="col-md-9">
+                {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+                </div>
+            </div>
             <button type="submit" class="btn btn-sm bg-light-primary">@lang('users.create')</button>
         </form>
     </div>

@@ -77,10 +77,11 @@ class HallsController extends Controller
             HallImage::create([
                 'hall_id' => $hall->id,
                 'tag' => 'img3',
-                'name' => $img2Name
+                'name' => $img3Name
             ]);
         }
-        return view('halls.index')->with('success', 'hall added successfully!');
+        session()->flash('success', 'hall added successfully!');
+        return redirect()->route('halls.index');
     }
 
     /**
@@ -187,6 +188,7 @@ class HallsController extends Controller
         $hall = Hall::find($id);
         $hallImages = HallImage::where('hall_id', $id)->delete();
         $hall->delete();
-        return redirect()->route('halls.index')->with('success', ['hall has been removed successfully!']);
+        session()->flash('success', 'hall has been removed successfully!');
+        return redirect()->route('halls.index');
     }
 }

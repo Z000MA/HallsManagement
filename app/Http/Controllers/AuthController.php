@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use Lang;
 use Validator;
 use Auth;
+use DB;
 use App\Models\User;
+use Illuminate\Support\Arr;
 
 class AuthController extends Controller
 {
@@ -67,7 +70,8 @@ class AuthController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Role::pluck('name','name')->all();
+        return view('users.create')->with('roles', $roles);
     }
 
     /**
@@ -90,6 +94,8 @@ class AuthController extends Controller
             'phone' => $request->phone,
             'password' => Hash::make($request->password)
         ]);
+        $user->assignRole($request->input('roles'));
+        session()->flash('success', 'new user added successfully!');
         return redirect()->route('users.index');
     }
 
@@ -102,7 +108,8 @@ class AuthController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show')->with('user', $user);
+        $roles = Role::pluck('name','name')->all();
+        return view('users.show')->with('user', $user)->with('roles', $roles);
     }
 
     /**
@@ -113,7 +120,10 @@ class AuthController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+        return view('users.edit',compact('user','roles','userRole'));
     }
 
     /**
@@ -125,7 +135,17 @@ class AuthController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        if (!$user) {
+            session()->flash('error', 'this user does not exist!');
+            return redirect()->route('users.index');
+        }
+        $input = $request->all();
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        $user->assignRole($request->input('roles'));
+        session()->flash('success', 'user updated!');
+        return redirect()->route('users.index');
     }
     public function activate($id)
     {
@@ -148,7 +168,8 @@ class AuthController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            return redirect()->route('users.index')->with('errors', ['this user does not exist!']);
+            session()->flash('error', 'this user does not exist!');
+            return redirect()->route('users.index');
         }
         $user->is_active = 0;
         $user->update();

@@ -64,10 +64,12 @@
                 </div>
             </div>
             <input type="hidden" name="_method" value="PUT">
+            @can('Halls-edit')
             <button type="submit" class="btn btn-sm bg-light-warning">
                 <i class="ft-edit mr-1"></i>
                 Update hall
             </button>
+            @endcan
         </form>
     </div>
 </div>

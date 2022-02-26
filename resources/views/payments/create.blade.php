@@ -47,10 +47,12 @@
                     <textarea name="remarks" class="form-control" style="height:100px;"></textarea>
                 </div>
             </div>
+            @can('Payments-create')
             <button type="submit" class="btn btn-btn-sm bg-light-primary">
                 <i class="ft-plus mr-1"></i>
                 @lang('payments.create')
             </button>
+            @endcan
         </form>
     </div>
 </div>

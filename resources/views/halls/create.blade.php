@@ -63,7 +63,9 @@
                     <input type="file" name="img3" class="form-control">
                 </div>
             </div>
+            @can('Halls-create')
             <button type="submit" class="btn btn-sm bg-light-primary">@lang('halls.create')</button>
+            @endcan
         </form>
     </div>
 </div>

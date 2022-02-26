@@ -73,6 +73,9 @@ class ReservationsController extends Controller
             return redirect()->route('reservations.create');
         }
         $input = $request->all();
+        if(!$request->discount){
+            $input['discount'] = 0;
+        }
         $input['user_id'] = auth()->user()->id;
         $reservation = Reservation::create($input);
         foreach($reservation->services as $service) {
@@ -189,7 +192,23 @@ class ReservationsController extends Controller
         session()->flash('success', 'reservation updated successfully!');
         return redirect()->route('reservations.index');
     }
-    
+    public function reportsView()
+    {
+        return view('reservations.reports');
+    }
+    public function reports(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'date_from' => 'required|date',
+            'date_to' => 'required|date'
+        ]);
+        if ($validator->fails()) {
+            session()->flash('error', $validator->errors());
+            return redirect()->route('reservations.reports');
+        }
+        $reservations = Reservation::whereDate('date', '>=', $request->date_from)->OrwhereDate('date', '<=', $request->date_to)->get();
+        return view('reservations.reports')->with('reservations', $reservations);
+    }
     /**
      * Remove the specified resource from storage.
      *

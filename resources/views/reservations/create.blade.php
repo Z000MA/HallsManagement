@@ -57,13 +57,15 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">@lang('reservations.discount')</label>
                 <div class="col-md-9">
-                    <input type="text" name="name" class="form-control">
+                    <input type="number" name="discount" class="form-control">
                 </div>
             </div>
+            @can('Reservations-create')
             <button type="submit" class="btn btn-sm bg-light-primary">
                 <i class="ft-plus mr-1"></i>
                 @lang('reservations.create')
             </button>
+            @endcan
         </form>
     </div>
 </div>
