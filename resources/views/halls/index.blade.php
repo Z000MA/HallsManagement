@@ -4,12 +4,14 @@
     <div class="card-header">
         <h4 class="card-title primary">
             @lang('halls.halls')
+            @can('Halls-create')
             <span class="@lang('site.pull')">
-            <a href="{{route('halls.create')}}" class="btn btn-sm bg-light-primary">
-                <i class="ft-plus mr-1"></i>
-                @lang('halls.create')
-            </a>
+                <a href="{{route('halls.create')}}" class="btn btn-sm bg-light-primary">
+                    <i class="ft-plus mr-1"></i>
+                    @lang('halls.create')
+                </a>
             </span>
+            @endcan
         </h4>
     </div>
     <div class="card-body">
@@ -34,9 +36,11 @@
                         <td>{{$hall->advance}}</td>
                         <td>
                             <div class="btn-group btn-group-sm">
+                                @can('Halls-edit')
                                 <a href="{{route('halls.edit', $hall->id)}}" class="btn btn-sm bg-light-warning">
                                     <i class="ft-edit"></i>
                                 </a>
+                                @endcan
                                 <a href="{{route('halls.show', $hall->id)}}" class="btn btn-sm bg-light-info">
                                     <i class="ft-search"></i>
                                 </a>

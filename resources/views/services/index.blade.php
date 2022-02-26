@@ -18,9 +18,9 @@
                 <table class="table table-sm">
                     <thead>
                         <tr>
-                            <td>@lang('services.name')</td>
-                            <td>@lang('services.hall')</td>
-                            <td>@lang('services.price')</td>
+                            <td class="font-weight-bold">@lang('services.name')</td>
+                            <td class="font-weight-bold">@lang('services.hall')</td>
+                            <td class="font-weight-bold">@lang('services.price')</td>
                             <td></td>
                             <td></td>
                         </tr>

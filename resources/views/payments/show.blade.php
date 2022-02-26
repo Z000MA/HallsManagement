@@ -40,10 +40,12 @@
                         <form action="{{route('payments.destroy', $payment->id)}}" method="POST">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
+                            @can('Payments-delete')
                             <button type="submit" class="btn btn-sm bg-light-danger">
                                 <i class="ft-trash mr-1"></i>
                                 @lang('payments.delete')
                             </button>
+                            @endcan
                         </form>
                     </div>
                 </div>

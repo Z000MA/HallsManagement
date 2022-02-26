@@ -4,12 +4,14 @@
     <div class="card-header">
         <h4 class="card-title primary">
             @lang('reservations.reservations')
+            @can('Reservations-create')
             <span class="@lang('site.pull')">
                 <a href="{{route('reservations.create')}}" class="btn btn-sm bg-light-primary">
                     <i class="ft-plus mr-1"></i>
                     @lang('reservations.create')
                 </a>
             </span>
+            @endcan
         </h4>
     </div>
     <div class="card-body">
@@ -60,7 +62,9 @@
                         <td>{{$reservation->user->name}}</td>
                         <td>
                             <div class="btn-group btn-group-sm">
+                                @can('Reservations-edit')
                                 <a href="{{route('reservations.show', $reservation->id)}}" class="btn btn-sm bg-light-warning"><i class="ft-edit"></i></a>
+                                @endcan
                                 <a href="{{route('reservations.print', $reservation->id)}}" target="_blank" class="btn btn-sm bg-light-info"><i class="ft-printer"></i></a>
                                 <a href="" class="btn btn-sm bg-light-danger"><i class="ft-trash"></i></a>
                             </div>

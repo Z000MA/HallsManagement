@@ -55,13 +55,16 @@
                     <tr>
                         <td></td>
                         <td>
+                        @can('Halls-delete')
                             <form action="{{route('halls.destroy', $hall->id)}}" method="POST">
+                                @csrf
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-sm bg-light-danger">
                                     <i class="ft-trash mr-1"></i>
                                     Delete hall
                                 </button>
                             </form>
+                        @endcan
                         </td>
                     </tr>
                 </table>

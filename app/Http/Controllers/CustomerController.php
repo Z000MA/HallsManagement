@@ -39,9 +39,9 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required|string'
+            'name' => 'required|unique:customers,name',
+            'email' => 'required|email|unique:customers,email',
+            'phone' => 'required|unique:customers,phone'
         ]);
         if ($validator->fails()) {
             return redirect()->route('customers.create')->with('errors', $validator->errors());

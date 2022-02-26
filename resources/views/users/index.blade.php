@@ -36,7 +36,13 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->phone}}</td>
-                        <td></td>
+                        <td>
+                        @if(!empty($user->getRoleNames()))
+                            @foreach($user->getRoleNames() as $role)
+                            <label class="badge badge-success">{{ $role }}</label>
+                            @endforeach
+                         @endif
+                        </td>
                         <td>
                             @if($user->is_active == "1")
                             <span class="badge badge-pill bg-light-success">active</span>
