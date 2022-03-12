@@ -45,24 +45,6 @@
                     <input type="text" name="google_location" class="form-control">
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-md-3 col-form-label">@lang('halls.img1')</label>
-                <div class="col-md-9">
-                    <input type="file" name="img1" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-3 col-form-label">@lang('halls.img2')</label>
-                <div class="col-md-9">
-                    <input type="file" name="img2" class="form-control">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-3 col-form-label">@lang('halls.img3')</label>
-                <div class="col-md-9">
-                    <input type="file" name="img3" class="form-control">
-                </div>
-            </div>
             @can('Halls-create')
             <button type="submit" class="btn btn-sm bg-light-primary">@lang('halls.create')</button>
             @endcan

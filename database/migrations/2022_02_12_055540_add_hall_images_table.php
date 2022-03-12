@@ -16,7 +16,6 @@ class AddHallImagesTable extends Migration
         Schema::create('hall_images', function (Blueprint $table) {
             $table->id();
             $table->integer('hall_id');
-            $table->string('tag');
             $table->string('name');
             $table->timestamps();
         });

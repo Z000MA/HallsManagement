@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
     protected $table = 'orders';
     protected $fillable = [
-        'customer_name', 'date', 'hall_id', 'period_id', 'state_id'
+        'customer_name','phone', 'email', 'date', 'hall_id', 'period_id', 'state_id'
     ];
     public function hall()
     {
@@ -18,7 +18,7 @@ class Order extends Model
     }
     public function period()
     {
-        return $this->belongsTo('App\Models\Period');
+        return $this->belongsTo('App\Models\ReservationPeriod');
     }
     public function state()
     {

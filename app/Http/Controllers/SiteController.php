@@ -15,7 +15,7 @@ class SiteController extends Controller
     public function index()
     {
         $halls = Hall::all();
-        return view('layouts.site')->with('halls', $halls);
+        return view('site.home')->with('halls', $halls);
     }
 
     /**

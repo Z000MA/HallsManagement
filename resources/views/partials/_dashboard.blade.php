@@ -20,7 +20,7 @@
                         </li>
                         <li class=" nav-item"><a href="{{route('reservations.index')}}"><i class="ft-calendar"></i><span class="menu-title" data-i18n="reservations">@lang('dashboard.reservations')</span></a>
                         </li>
-                        <li class=" nav-item"><a href="app-calendar.html"><i class="ft-clipboard"></i><span class="menu-title" data-i18n="orders">@lang('dashboard.orders')</span></a>
+                        <li class=" nav-item"><a href="{{route('orders.index')}}"><i class="ft-clipboard"></i><span class="menu-title" data-i18n="orders">@lang('dashboard.orders')</span></a>
                         </li>
                         <li class=" nav-item"><a href="{{route('services.index')}}"><i class="ft-menu"></i><span class="menu-title" data-i18n="services">@lang('dashboard.services')</span></a>
                         </li>

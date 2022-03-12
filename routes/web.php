@@ -7,12 +7,14 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function () {
         Route::get('/', [App\Http\Controllers\SiteController::class, 'index']);
-        Route::get('/orders', [App\Http\Controllers\OrdersController::class, 'index'])->name('orders.index');
         Route::get('/orders/{id}/create', [App\Http\Controllers\OrdersController::class, 'create'])->name('orders.create');
         Route::post('/orders', [App\Http\Controllers\OrdersController::class, 'store'])->name('orders.store');
         Route::get('/login', [App\Http\Controllers\AuthController::class, 'loginView'])->name('login');
         Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
         Route::group(['middleware' => ['auth']], function () {
+            Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+            Route::get('/orders', [App\Http\Controllers\OrdersController::class, 'index'])->name('orders.index');
+            Route::resource('/gallery', App\Http\Controllers\GalleryController::class);
             Route::resource('/users', App\Http\Controllers\AuthController::class);
             Route::put('/users/{id}/activate', [App\Http\Controllers\AuthController::class, 'activate'])->name('users.activate');
             Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
