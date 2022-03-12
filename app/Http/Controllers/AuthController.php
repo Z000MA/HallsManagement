@@ -21,6 +21,9 @@ class AuthController extends Controller
      */
     public function index()
     {
+        if(Auth::guest()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         return view('users.index')->with('users', $users);
     }
@@ -45,6 +48,11 @@ class AuthController extends Controller
             return redirect()->route('home');
         }
         return redirect()->route('login')->with('errors', [Lang::get('messages.loginFailed')]);
+    }
+    public function logout () {
+        //logout user
+        Auth::logout();
+        return redirect()->route('login');
     }
     public function register(Request $request)
     {

@@ -50,36 +50,6 @@ class HallsController extends Controller
             return redirect()->route('halls.create')->with('errors', $validator->errors());
         }
         $hall = Hall::create($request->all());
-        if ($request->hasFile('img1')) {
-            $img1Ext = $request->file('img1')->getClientOriginalExtension();
-            $img1Name = time() . '1' . '.' . $img1Ext;
-            $request->file('img1')->storeAs('/public/halls', $img1Name);
-            HallImage::create([
-                'hall_id' => $hall->id,
-                'tag' => 'img1',
-                'name' => $img1Name
-            ]);
-        }
-        if ($request->hasFile('img2')) {
-            $img2Ext = $request->file('img2')->getClientOriginalExtension();
-            $img2Name = time() . '2' . '.' . $img2Ext;
-            $request->file('img2')->storeAs('/public/halls', $img2Name);
-            HallImage::create([
-                'hall_id' => $hall->id,
-                'tag' => 'img2',
-                'name' => $img2Name
-            ]);
-        }
-        if ($request->hasFile('img3')) {
-            $img3Ext = $request->file('img3')->getClientOriginalExtension();
-            $img3Name = time() . '3' . '.' . $img3Ext;
-            $request->file('img3')->storeAs('/public/halls', $img3Name);
-            HallImage::create([
-                'hall_id' => $hall->id,
-                'tag' => 'img3',
-                'name' => $img3Name
-            ]);
-        }
         session()->flash('success', 'hall added successfully!');
         return redirect()->route('halls.index');
     }

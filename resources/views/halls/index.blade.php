@@ -53,7 +53,7 @@
         </div>
         @else
         <p class="border border-danger rounded p-3 text-danger text-center">
-            no halls registered!
+        @lang('halls.noHalls')
         </p>
         @endif
     </div>

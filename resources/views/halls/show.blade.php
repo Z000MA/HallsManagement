@@ -33,15 +33,15 @@
             <div class="col-md-7 mt-md-0 mt-3">
                 <table class="table table-sm">
                     <tr>
-                        <td class="font-weight-bold">Name</td>
+                        <td class="font-weight-bold">@lang('halls.name')</td>
                         <td>{{$hall->name}}</td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold">Capacity</td>
+                        <td class="font-weight-bold">@lang('halls.capacity')</td>
                         <td>{{$hall->capacity}} person</td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold">Location</td>
+                        <td class="font-weight-bold">@lang('halls.location')</td>
                         <td>{{$hall->location}}</td>
                     </tr>
                     <tr>
@@ -49,7 +49,7 @@
                         <td>{{$hall->reservations->count()}}</td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold">Advance value</td>
+                        <td class="font-weight-bold">@lang('halls.advance')</td>
                         <td>{{$hall->advance}} SDG</td>
                     </tr>
                     <tr>
@@ -61,17 +61,17 @@
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-sm bg-light-danger">
                                     <i class="ft-trash mr-1"></i>
-                                    Delete hall
+                                    @lang('halls.delete')
                                 </button>
                             </form>
                         @endcan
                         </td>
                     </tr>
                 </table>
-            </div>
-            <div class="col-md-12">
-                <div class="table-responsive"></div>
-            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="table-responsive"></div>
+        </div>
         </div>
     </div>
 </div>

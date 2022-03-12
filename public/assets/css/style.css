@@ -9,3 +9,71 @@ NOTE:
 ------
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+.img-box {
+    position: relative;
+    box-sizing: border-box;
+	width: calc(170px - 30px);
+    height: calc(170px - 30px);
+    background: #238fa5bd;
+	background-size: cover;
+    border-radius: 10px;
+}
+.img-box .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #23798ec0;
+	transition: 0.5s;
+	z-index: 1;
+	border-radius: 10px;
+	opacity:0.5;
+}
+.img-box img {
+	width:100%;
+	height:100%;
+	border-radius: 10px;
+}
+.img-box:hover .icon {
+	top: 10px;
+	left: calc(50% - 30px);
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	opacity:1;
+}
+.img-box .icon a i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 70px;
+	transition: 0.5s;
+	color: #fff;
+}
+.img-box:hover .icon a i {
+	font-size: 30px;
+}
+.img-box .content {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	top: 40%;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+	transition: 0.05s;
+	opacity: 0;
+}
+.img-box:hover .content {
+	top: 60px;
+	opacity: 1;
+}
+.img-box .content p {
+	margin: 0 0 10px;
+	padding: 0;
+	color: #fff;
+}

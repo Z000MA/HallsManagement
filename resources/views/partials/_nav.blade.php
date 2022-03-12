@@ -53,7 +53,7 @@
                                 </a><a class="dropdown-item" href="app-email.html">
                                     <div class="d-flex align-items-center"><i class="ft-mail mr-2"></i><span>My Inbox</span></div>
                                 </a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="auth-login.html">
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{route('logout')}}">
                                     <div class="d-flex align-items-center"><i class="ft-power mr-2"></i><span>Logout</span></div>
                                 </a>
                             </div>

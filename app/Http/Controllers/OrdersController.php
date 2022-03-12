@@ -35,7 +35,7 @@ class OrdersController extends Controller
         $hall = Hall::find($id);
         $halls = Hall::all();
         $periods = ReservationPeriod::all();
-        return view('orders.create')->with('halls', $halls)->with('periods', $periods)->with('selected', $hall);
+        return view('orders.create')->with('periods', $periods)->with('hall', $hall);
     }
     /**
      * Store a newly created resource in storage.
@@ -49,13 +49,17 @@ class OrdersController extends Controller
             'hall_id' => 'required|integer',
             'period_id' => 'required|integer',
             'customer_name' => 'required|string',
+            'phone' => 'required|numeric',
+            'email' => 'required|email',
             'date' => 'required|date',
             'services' => 'required|array'
         ]);
         if ($validator->fails()) {
+            dd($validator->errors());
             session('error', $validator->errors());
             return redirect()->route('orders.create', $request->hall_id);
         }
+        
         $reservationCheck = Reservation::where('hall_id', $request->hall_id)
                                             ->whereDate('date', $request->date)
                                             ->where('period_id', $request->period_id)
@@ -67,6 +71,16 @@ class OrdersController extends Controller
         $input = $request->all();
         $input['state_id'] = 1;
         $order = Order::create($input);
+        $required_services = Service::where('required', 1)->get();
+        foreach($required_services as $service) {
+            OrderService::create([
+                'order_id' => $order->id,
+                'service_id' => $service->id,
+                'price' => $service->price,
+                'qty' => 1,
+                'sub' => $service->price
+            ]);
+        }
         foreach ($request->services as $service)
         {
             $serve = Service::find($service);
